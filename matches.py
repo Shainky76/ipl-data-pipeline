@@ -18,8 +18,8 @@ def save_data(df,output_path):
     df.to_csv(output_path, index=False)
     print(f"saved to {output_path}")
 
-df=read_file("/Users/shainky/Downloads/archive/matches.csv")
+df=read_file("matches.csv")
 if df is not None:
     filter_file=filter_data(df)
-    save_data(filter_file, "/Users/shainky/Downloads/archive/matches_filter.csv")
+    save_data(filter_file, "matches_filter.csv")
 
