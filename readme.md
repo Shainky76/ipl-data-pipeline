@@ -43,3 +43,16 @@ See `analysis.sql` for full analytical queries including:
 - Toss decision impact on results
 
 ## Project Structure
+
+ipl-data-pipeline/
+├── ipl_pipeline.py      # Main PySpark ETL pipeline
+├── ipl_spark.py         # PySpark DataFrame exploration
+├── matches.py           # Python/Pandas pipeline
+├── load_data.py         # Data loader
+├── connection_database.py # Database connection
+├── analysis.sql         # SQL analytical queries
+└── readme.md            # Project documentation
+
+## Dataset
+
+IPL matches dataset sourced from Kaggle.
