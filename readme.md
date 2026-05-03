@@ -1,41 +1,45 @@
 # IPL Data Pipeline
 
-End to end data pipeline built on Azure and Python.
+End-to-end data pipeline built using Azure Data Factory, ADLS Gen2, Python and PySpark.
 
-## What it does
-- Ingests IPL match data from CSV
-- Filters matches where DL method was applied
-- Saves clean output for analysis
+## Architecture
 
-## Tools used
-- Python, Pandas
-- Azure Data Factory
-- Azure Data Lake Storage Gen2
+CSV Data → Python/Pandas → Azure Data Lake Storage Gen2 → ADF Pipeline → PySpark Analysis → Insights
 
-PySpark Pipeline (Phase 2)
+## Tools & Technologies
 
-Rebuilt the pipeline using PySpark for distributed data processing.
+- **Azure Data Factory (ADF)** — parameterised pipelines with Metadata and Lookup activities
+- **Azure Data Lake Storage Gen2 (ADLS)** — raw and processed data storage
+- **Python & Pandas** — data ingestion and initial transformation
+- **PySpark & Spark SQL** — distributed data processing and analytics
+- **Window Functions** — season-wise player performance ranking
 
-## Tech added
-- PySpark 4.1.1
-- Spark SQL
-- Window functions
+## Pipeline Phases
 
-## New files
-- `ipl_spark.py` — PySpark DataFrame exploration
-- `ipl_pipeline.py` — Full ETL pipeline in PySpark
+### Phase 1 — Python/Pandas Pipeline
+- Ingests IPL match CSV data
+- Filters out DL method matches
+- Loads clean data to ADLS Gen2
 
-## Analyses
-- Most IPL titles per team
+### Phase 2 — PySpark Pipeline
+- Rebuilt pipeline using PySpark for distributed processing
+- Implemented Spark SQL with window functions
+- Season-wise Orange Cap winner calculation
+- Toss impact analysis using aggregations
+
+## Key Findings
+
+- Teams fielding first win **55.9%** of matches vs 45.7% batting first
+- **Virat Kohli** scored 973 runs in 2016 — highest single season in dataset
+- **CH Gayle** won Player of the Match 21 times — most in IPL history
+- **Mumbai Indians** hold the most IPL titles
+
+## SQL Analysis
+
+See `analysis.sql` for full analytical queries including:
 - Top 10 run scorers all time
 - Top 10 wicket takers
-- Orange cap winner per season (Window function)
-- Toss impact on match result (Spark SQL)
+- Orange Cap winners per season
+- Toss decision impact on results
 
-## Key findings
-- Teams fielding after toss win win 55.9% of matches vs 45.7% batting first
-- Virat Kohli scored 973 runs in 2016 — highest single season in dataset
-- CH Gayle won Player of the Match 21 times — most in IPL history
-
-## Dataset
-IPL matches dataset from Kaggle
+## Project Structure
